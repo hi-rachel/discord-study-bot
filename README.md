@@ -13,8 +13,8 @@ This bot was created to automate attendance checks when using Discord for study 
 1. Clone the repository and navigate to the project directory.
 
    ```bash
-   git clone <repository-url>
-   cd <project-directory>
+   git clone https://github.com/hi-rachel/discord-study-bot.git
+   cd discord-study-bot
    ```
 
 2. Create a virtual environment:
