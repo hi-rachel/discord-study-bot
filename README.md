@@ -1,4 +1,4 @@
-# Book Club Discord Bot
+# Discord Bot For Study Club
 
 <p align="middle">
 <img width="300px" src="https://github.com/hi-rachel/X/assets/103404125/a5ddae76-7940-4335-bcf4-069ac7f5c2e3">
@@ -35,7 +35,7 @@ This bot was created to automate attendance checks when using Discord for study 
    DISCORD_TOKEN=your_discord_bot_token
    TARGET_DAYS=Sunday,Monday
    TARGET_HOUR=21
-   TARGET_MINUTE=00
+   TARGET_MINUTE=0
    ```
 
 5. Run the bot
