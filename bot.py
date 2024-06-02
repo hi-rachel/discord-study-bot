@@ -31,12 +31,11 @@ async def check_voice_channel():
     if now.hour == TARGET_HOUR and now.minute == TARGET_MINUTE and now.strftime("%A") in TARGET_DAYS:
         print("출석체크 시간!")
         for guild in bot.guilds:
-            print(guild)
             voice_channel = discord.utils.get(guild.voice_channels, name='책 읽는 공간')  # 음성 채널 이름으로 변경
             if voice_channel is not None:
                 members = voice_channel.members
                 member_names = []
-                for member in voice_channel.members:
+                for member in members:
                     nickname = member.nick  # 닉네임 확인
                     if nickname is None:
                         nickname = member.global_name  # 닉네임이 없으면 전역 이름 사용
