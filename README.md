@@ -31,7 +31,7 @@ This bot was created to automate attendance checks when using Discord for study 
 
 4. Set up your environment variables in a .env file. Here is an example:
 
-   ```json
+   ```bash
    DISCORD_TOKEN=your_discord_bot_token
    TARGET_DAYS=Sunday,Monday
    TARGET_HOUR=21
