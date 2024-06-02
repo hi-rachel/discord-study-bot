@@ -1,0 +1,6 @@
+VOICE_CHANNEL = "책 읽는 공간"
+CHATTING_CHANNEL = "출석-관리"
+STUDY_CLUB_NAME = "모각북클럽"
+TARGET_DAYS = ["Sunday", "Monday"]
+TARGET_HOUR = 21
+TARGET_MINUTE = 0

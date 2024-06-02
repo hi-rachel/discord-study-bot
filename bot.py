@@ -1,6 +1,7 @@
+import config
+import json
 import os
 from dotenv import load_dotenv
-import config
 import asyncio
 import discord
 from discord.ext import tasks, commands
@@ -28,8 +29,20 @@ async def reset_monthly_attendance():
             print("새로운 달이 시작되었습니다. 출석 횟수를 초기화합니다.")
         await asyncio.sleep(60 * 60 * 24 * 7)  # 1주일마다 한 번씩 검사
 
+# 출석체크 기록을 저장하고 불러오는 함수
+def load_attendance_counts():
+    try:
+        with open('attendance_counts.json', 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return {}
+    
+def save_attendance_counts():
+    with open('attendance_counts.json', 'w') as file:
+        json.dump(attendance_counts, file)
+
 # 멤버별 출석 횟수를 저장하는 딕셔너리
-attendance_counts = {}
+attendance_counts = load_attendance_counts()
 
 @bot.event
 async def on_ready():
@@ -40,6 +53,7 @@ async def on_ready():
 @tasks.loop(minutes=1)
 async def check_voice_channel():
     now = datetime.now()
+    print(now)
     if now.hour == int(config.TARGET_HOUR) and now.minute == int(config.TARGET_MINUTE) and now.strftime("%A") in config.TARGET_DAYS:
         print("출석체크 시간!")
         for guild in bot.guilds:
@@ -61,5 +75,8 @@ async def check_voice_channel():
                     attendance_message += ", ".join(member_list)
                     await channel.send(attendance_message)
                     print('성공적으로 출석체크 메시지를 보냈습니다.')
+
+                    # 출석체크 후에 출석 기록을 파일에 저장
+                    save_attendance_counts()
 
 bot.run(DISCORD_TOKEN)

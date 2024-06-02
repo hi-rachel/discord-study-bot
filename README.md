@@ -29,13 +29,23 @@ This bot was created to automate attendance checks when using Discord for study 
     pip install -r requirements.txt
    ```
 
-4. Set up your environment variables in a .env file. Here is an example:
+4. Set up your environment variables in a .env file and .config.py file. Here is an example:
+
+   .env for secret
 
    ```bash
    DISCORD_TOKEN=your_discord_bot_token
-   TARGET_DAYS=Sunday,Monday
-   TARGET_HOUR=21
-   TARGET_MINUTE=0
+   ```
+
+   .config.py for public
+
+   ```bash
+   VOICE_CHANNEL = "attendance_check_channel"
+   CHATTING_CHANNEL = "attendance_result_channel"
+   STUDY_CLUB_NAME = "your_discord_server_name"
+   TARGET_DAYS = ["Sunday", "Monday"]
+   TARGET_HOUR = 21
+   TARGET_MINUTE = 0
    ```
 
 5. Run the bot
