@@ -33,7 +33,11 @@ async def reset_monthly_attendance():
 def load_attendance_counts():
     try:
         with open('attendance_counts.json', 'r') as file:
-            return json.load(file)
+            data = file.read()
+            if data.strip():  # Check if the file is not empty
+                return json.loads(data)
+            else:
+                return {}  # Return an empty dictionary if the file is empty
     except FileNotFoundError:
         return {}
     
