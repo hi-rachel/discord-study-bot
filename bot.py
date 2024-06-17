@@ -57,12 +57,12 @@ async def on_ready():
 @tasks.loop(minutes=1)
 async def check_voice_channel():
     now = datetime.now()
-    print(now)
     if now.hour == int(config.TARGET_HOUR) and now.minute == int(config.TARGET_MINUTE) and now.strftime("%A") in config.TARGET_DAYS:
         print("출석체크 시간!")
         for guild in bot.guilds:
             voice_channel = discord.utils.get(guild.voice_channels, name=config.VOICE_CHANNEL)  # 음성 채널 이름으로 변경
-            if voice_channel is not None:
+            print(voice_channel.members)
+            if voice_channel is not None and len(voice_channel.members) > 0:
                 members = voice_channel.members
                 member_list = []
                 for member in members:
